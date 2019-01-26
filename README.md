@@ -7,8 +7,3 @@
 or
 
 2. sh renew.sh
-
-# cron_table 設定
-
-每三個月執行一次
-
