@@ -1,25 +1,26 @@
-#!/bin/bash
+#!/bin/sh
 # Program:
 #       This program helps media server to renew the ssl cetificate
 # History:
 #       2019/1/23 GaryHsu First release
 
+# print commands
+set -x
+# print error message
+set -e
+
 echo "Start..."
 
-sudo su
+sudo certbot renew --dry-run
 
-certbot renew --dry-run
+sudo cp /etc/letsencrypt/live/video.iottalk.tw/privkey.pem /etc/kurento/
 
-cp /etc/letsencrypt/live/video.iottalk.tw/privkey.pem /etc/kurento/
-
-cp /etc/letsencrypt/live/video.iottalk.tw/fullchain.pem /etc/kurento/
+sudo cp /etc/letsencrypt/live/video.iottalk.tw/fullchain.pem /etc/kurento/
 
 cd /etc/kurento
 
-cat privkey.pem fullchain.pem > privkey-fullchain.pem
+sudo sh -c 'cat privkey.pem fullchain.pem > privkey-fullchain.pem'
 
-chown kurento privkey-fullchain.pem
+sudo chown kurento privkey-fullchain.pem
 
-docker container restart kms
-
-exit 0
+sudo docker container restart kms
