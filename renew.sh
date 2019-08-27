@@ -21,6 +21,7 @@ cd /etc/kurento
 
 sudo sh -c 'cat privkey.pem fullchain.pem > privkey-fullchain.pem'
 
-sudo chown kurento privkey-fullchain.pem
+# if you are not root user, run this command
+# sudo chown kurento privkey-fullchain.pem
 
 sudo docker container restart kms
