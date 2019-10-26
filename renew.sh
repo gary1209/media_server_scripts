@@ -1,6 +1,6 @@
 #!/bin/sh
 # Program:
-#       This program helps media server to renew the ssl cetificate
+#       This program helps media server to renew the ssl certificate
 # History:
 #       2019/1/23 GaryHsu First release
 
